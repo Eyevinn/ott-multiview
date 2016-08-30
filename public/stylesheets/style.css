@@ -1,0 +1,58 @@
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.tiny {
+  font-size: 8px;
+}
+
+.vp {
+  border: 1px solid #fff;
+  min-height: 200px;
+  padding: 0px;
+  text-align: center;
+}
+
+.info {
+  background: url('../images/eyevinn-logo-square.png');
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 280px;
+  min-height: 280px;
+  color: #000;
+  text-align: center;
+  padding: 2px;
+}
+
+.vp-large {
+  min-height: 280px;
+}
+
+video {
+  width: 100%
+}
+
+.video-active {
+  opacity: 1;
+}
+
+.video-paused {
+  opacity: 0.5;
+}
+
+.video-buffering {
+  border: 3px solid red;
+}
+
+.video-unmuted {
+  border: 3px solid green;
+}
