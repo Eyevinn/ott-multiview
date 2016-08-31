@@ -5,7 +5,10 @@
 var activeViewPort;
 
 function initHlsPlayer(conf, videoelemid, donecb) {
-  var hls = new Hls();
+  var hlsconfig = {
+    capLevelToPlayerSize: true
+  };
+  var hls = new Hls(hlsconfig);
   var videoelem = document.getElementById(videoelemid);
   hls.attachMedia(videoelem);
   hls.on(Hls.Events.MEDIA_ATTACHED, function() {
@@ -102,6 +105,19 @@ function activateViewPort(videoelemid) {
   activeViewPort = videoelemid;
 }
 
+function togglePlaybackOnAllViewPorts() {
+  for(var i=0; i<2; i++) {
+    for(var j=0; j<4; j++) {
+      var videoelem = document.getElementById('vp'+i+j);
+      if (videoelem.paused) {
+        videoelem.play();
+      } else {
+        videoelem.pause();
+      }    
+    }
+  }
+}
+
 function initMultiView(config) {
   if (config) {
     shaka.polyfill.installAll();
@@ -114,4 +130,18 @@ function initMultiView(config) {
       initViewPort(config['row1'][0], 'vpright');
     }
   }
+}
+
+function onKeyPress(ev) {
+  if (ev.keyCode == 32) {
+    // space
+    console.log('operator hit space');
+    togglePlaybackOnAllViewPorts();
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+}
+
+function initKeyControls() {
+  document.addEventListener("keypress", onKeyPress, false);
 }
