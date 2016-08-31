@@ -161,6 +161,11 @@ function onKeyPress(ev) {
     ev.stopPropagation();
   } else if (ev.keyCode == 102) {
     // f
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
   } else if (ev.keyCode >= 49 && ev.keyCode <= 56) {
     // 1-8 
     var idx = ev.keyCode - 49;
