@@ -3,6 +3,7 @@
 // license that can be found in the LICENSE file.
 // Author: Jonas Birme (Eyevinn Technology)
 var activeViewPort;
+var shakaPlayers = {};
 
 function initHlsPlayer(conf, videoelemid, donecb) {
   var hlsconfig = {
@@ -38,11 +39,26 @@ function initHlsPlayer(conf, videoelemid, donecb) {
       }
     }
   });
+  hls.on(Hls.Events.LEVEL_SWITCH, function(event, data) {
+    var level = hls.levels[data.level];
+    var metaelem = document.getElementById(hls.media.id + '-meta');
+    metaelem.innerHTML = (level.bitrate / 1000).toFixed(0) + 'kbps';
+  });
 }
 
 function initDashPlayer(conf, videoelemid, donecb) {
   var videoelem = document.getElementById(videoelemid);
   var shakap = new shaka.Player(videoelem);
+  shakaPlayers[videoelemid] = shakap;
+  videoelem.addEventListener('progress', function(ev) {
+    if (shakaPlayers[ev.target.id]) {
+      var p = shakaPlayers[ev.target.id];
+      var stats = p.getStats();
+      var metaelem = document.getElementById(ev.target.id + '-meta');
+      metaelem.innerHTML = (stats.streamBandwidth / 1000).toFixed(0) + 'kbps';
+    }
+  });
+
   shakap.load(conf.manifest).then(function(ev) {
     videoelem.muted = true;
     shakap.setMaxHardwareResolution(600, 600);
