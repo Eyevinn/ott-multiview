@@ -115,10 +115,14 @@ function activateViewPort(videoelemid) {
     currentActiveVideoElem.className = currentActiveVideoElem.className.replace("video-unmuted", "");
     currentActiveVideoElem.muted = true;
   }
-  newActiveVideoElem = document.getElementById(videoelemid);
-  newActiveVideoElem.className += " video-unmuted";
-  newActiveVideoElem.muted = false;
-  activeViewPort = videoelemid;
+  if (activeViewPort != videoelemid) {
+    newActiveVideoElem = document.getElementById(videoelemid);
+    newActiveVideoElem.className += " video-unmuted";
+    newActiveVideoElem.muted = false;
+    activeViewPort = videoelemid;
+  } else {
+    activeViewPort = undefined;
+  }
 }
 
 function togglePlaybackOnAllViewPorts() {
@@ -155,6 +159,18 @@ function onKeyPress(ev) {
     togglePlaybackOnAllViewPorts();
     ev.preventDefault();
     ev.stopPropagation();
+  } else if (ev.keyCode == 102) {
+    // f
+  } else if (ev.keyCode >= 49 && ev.keyCode <= 56) {
+    // 1-8 
+    var idx = ev.keyCode - 49;
+    var row = 0;
+    if (idx > 3) {
+      idx -= 4;
+      row = 1;
+    }
+    videoelemid = 'vp' + row + idx;
+    activateViewPort(videoelemid);
   }
 }
 

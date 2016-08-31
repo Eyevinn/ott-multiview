@@ -38,7 +38,9 @@ a {
 }
 
 video {
-  width: 100%
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid #777777;
 }
 
 .video-active {
@@ -56,3 +58,33 @@ video {
 .video-unmuted {
   border: 3px solid green;
 }
+
+.title {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  position: relative;
+  bottom: 10px;
+}
+
+.overlay {
+  position: relative;
+  width: 100%;
+  top: -20px;
+  background-color: #000;
+  opacity: 0.8;
+  z-index: 20;
+}
+
+.shortcut {
+  z-index: 15;
+  font-size: 8px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: 1px solid;
+  padding: 3px;
+  background-color: #000;
+}
+
