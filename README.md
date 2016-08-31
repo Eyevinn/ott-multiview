@@ -1,8 +1,11 @@
-This is a web based multiview screen for HLS and MPEG-DASH streams based on hls.js and Shaka Player.
+This is a web based multiview screen for HLS and MPEG-DASH streams based on hls.js and Shaka Player. Recommended to run in fullscreen mode.
 
 ![](screenshot.png)
 
-Currently only supports Chrome web browser
+Some limitations apply:
+
+- No support for DRM protected content as this is often solutions specific to each site
+- Only tested in Chrome and Safari
 
 # Installation
 
@@ -38,6 +41,13 @@ where example.json is a configuration file placed in the directory config/ and c
 				  "type": "dash" }
 			]
 		}
+
+To toggle audio on or off click on the viewport that you want to listen to. A green border indicates for which viewport the audio is enabled. You can also use the keyboard keys 1-8.
+
+## Keyboard Shortcuts
+- SPACE - toggle play / pause for all viewports
+- 1-8 - activate audio for viewport 1 to 8
+- F - toggle fullscreen mode
 		
 # Contribution
 
