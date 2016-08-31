@@ -125,17 +125,23 @@ function activateViewPort(videoelemid) {
   }
 }
 
+function togglePlayback(videoelem) {
+  if (videoelem.paused) {
+    videoelem.play();
+  } else {
+    videoelem.pause();
+  }
+}
+
 function togglePlaybackOnAllViewPorts() {
   for(var i=0; i<2; i++) {
     for(var j=0; j<4; j++) {
       var videoelem = document.getElementById('vp'+i+j);
-      if (videoelem.paused) {
-        videoelem.play();
-      } else {
-        videoelem.pause();
-      }    
+      togglePlayback(videoelem);
     }
   }
+  togglePlayback(document.getElementById('vpleft')); 
+  togglePlayback(document.getElementById('vpright')); 
 }
 
 function initMultiView(config) {
