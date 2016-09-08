@@ -1,3 +1,12 @@
+#stats-view{
+  z-index: 100;
+  position: absolute;
+  top:-100px;
+  background-color: black
+}
+
+
+
 html {
   background-color: #000;
 }
@@ -91,4 +100,3 @@ video {
   padding: 3px;
   background-color: #000;
 }
-

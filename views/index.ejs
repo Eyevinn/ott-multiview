@@ -72,18 +72,28 @@
         <div class="shortcut">8</div>
         <div class="tiny overlay" id="vp13-meta"></div>
         <div class="title" id="vp13-title"></div>
+        <div id="vp13stats-view">
+          <label>playTime:</label>  <p id="vp13playTime"></p>
+          <label>streamBandwidth:</label>   <p id="vp13streamBandwidth"></p>
+          <label>decodedFrames:</label>   <p id="vp13decodedFrames"></p>
+        </div>
       </div>
     </div>
     <div><p class="tiny">Click on viewport to activate audio | SPACE - pause/resume | F - toggle fullscreen | 1-8 - activate viewport</p></div>
   </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="javascripts/hls.min.js" type="text/javascript"></script>
   <script src="javascripts/shaka-player.compiled.js" type="text/javascript"></script>
   <script src="javascripts/viewer.js" type="text/javascript"></script>
+      <script src="javascripts/test.js" type="text/javascript"></script>
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
       initMultiView(<%- conf %>);
       initKeyControls();
     });
   </script>
+
+
+
   </body>
 </html>
