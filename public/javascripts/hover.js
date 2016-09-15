@@ -21,10 +21,11 @@ window.onload = function() {
 	displayStats = true;
 
 	/* updatde stats */
-	updateVideoStatsTimer = setInterval(function(){ onTimer() }, 100);
+	updateVideoStatsTimer = setInterval(function(){ onTimer() }, 1000);
 		
     }, function() {
         displayStats = false;
+	statsDiv = $(this).find('.videoInfo');
 	statsDiv.hide();
     });
 
@@ -32,8 +33,12 @@ window.onload = function() {
     function onTimer(){
         if (displayStats == true)
         {	//Statistics for dash video
-	    stats = shakaPlayers[videoId].getStats();
-	    statsDiv.html(  '<table><tr><th>Video id: </th><th>' + videoId + '</th></tr>'+
+            if (shakaPlayers[videoId] === undefined) {
+                statsDiv.html('<p>No data available</p>');
+            } else {
+
+	        stats = shakaPlayers[videoId].getStats();
+	        statsDiv.html(  '<table><tr><th>Video id: </th><th>' + videoId + '</th></tr>'+
 			    '<tr><th>Decoded frames: </th><th>' + stats.decodedFrames + '</th></tr>'+
 			    '<tr><th>Dropped frames: </th><th>' + stats.droppedFrames + '</th></tr>'+
 			    '<tr><th>Buffering time: </th><th>' + stats.bufferingTime.toFixed(2) + ' s</th></tr>'+
@@ -43,7 +48,8 @@ window.onload = function() {
 			    //'<tr><th>Switch history: </th><th>' + stats.switchHistory + '</th></tr>'+
 			    '<tr><th>Width: </th><th>' + stats.width + ' pxls</th></tr>'+
 			    '<tr><th>Height: </th><th>' + stats.height + ' pxls</th></tr></table>');
-	}
+	    }
+        }
 	else {
 	    clearInterval(updateVideoStatsTimer);
 	}
