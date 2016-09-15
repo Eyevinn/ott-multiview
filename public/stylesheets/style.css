@@ -13,6 +13,23 @@ a {
   color: #00B7FF;
 }
 
+th {
+  padding: 0.3em;
+}
+
+.videoInfo {
+  background-color: rgba(0,0,0,0.80);
+  border-radius: 5%;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  z-index: 1000;
+  position: absolute;
+  width: 60%;
+  height: auto;
+  left: 20%;
+  top: 10%;
+}
 
 .tiny {
   font-size: 8px;

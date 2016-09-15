@@ -67,7 +67,6 @@ function initDashPlayer(conf, videoelemid, donecb) {
   }).catch(function(e) { console.log("Error: ", e); });
 }
 
-
 function initPlayer(conf, videoelemid, donecb) {
   if (conf.type === 'hls') {
     initHlsPlayer(conf, videoelemid, donecb);
@@ -90,7 +89,7 @@ function onPlaying(ev) {
 
 function initViewPort(conf, videoelemid) {
   initPlayer(conf, videoelemid, function(videoelem) {
-    console.log(videoelemid + " loaded!");
+    //console.log(videoelemid + " loaded!");
     videoelem.addEventListener("click", onVideoClick);
     videoelem.addEventListener("waiting", onWaiting);
     videoelem.addEventListener("playing", onPlaying);

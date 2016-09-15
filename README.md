@@ -2,6 +2,8 @@ This is a web based multiview screen for HLS and MPEG-DASH streams based on hls.
 
 ![](screenshot.png)
 
+Demo: http://labs.eyevinn.se/multiview/?config=example.json
+
 Some limitations apply:
 
 - No support for DRM protected content as this is often solutions specific to each site
