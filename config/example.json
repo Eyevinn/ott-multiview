@@ -1,0 +1,38 @@
+{
+  "row0": [
+    { "title": "Example 1",
+      "manifest": "http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8",
+      "type": "hls"
+    },
+    { "title": "Example 2",
+      "manifest": "http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8",
+      "type": "hls"
+    },
+    { "title": "Example 3",
+      "manifest": "http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8",
+      "type": "hls"
+    },
+    { "title": "Example 4",
+      "manifest": "http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8",
+      "type": "hls"
+    }
+ ],
+  "row1": [
+    { "title": "Example 5",
+      "manifest": "http://www.bok.net/dash/tears_of_steel/cleartext/stream.mpd",
+      "type": "dash"
+    },
+    { "title": "Example 6",
+      "manifest": "http://www.bok.net/dash/tears_of_steel/cleartext/stream.mpd",
+      "type": "dash"
+    },
+    { "title": "Example 7",
+      "manifest": "http://www.bok.net/dash/tears_of_steel/cleartext/stream.mpd",
+      "type": "dash"
+    },
+    { "title": "Example 8",
+      "manifest": "http://www.bok.net/dash/tears_of_steel/cleartext/stream.mpd",
+      "type": "dash"
+    }
+  ]
+}
