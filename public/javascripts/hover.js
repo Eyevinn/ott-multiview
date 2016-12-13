@@ -32,7 +32,7 @@ window.onload = function() {
     // Get video stats and add them to html div
     function onTimer(){
         if (displayStats == true)
-        {	//Statistics for dash video
+        {	//Statistics for HLS video not yet available
             if (shakaPlayers[videoId] === undefined) {
                 statsDiv.html('<p>No data available</p>');
             } else {
