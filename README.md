@@ -13,37 +13,53 @@ Some limitations apply:
 
 Get the code from Github or fork the repository if you plan to contribute to this project.
 
-		git clone https://github.com/Eyevinn/ott-multiview.git
+`git clone https://github.com/Eyevinn/ott-multiview.git`
 		
-Install the necessary node modules
+Install the necessary node modules:
 
-		npm install
+> npm install
 		
-Start the Node express app
+Start the Node express app:
 
-		npm start
-		
+> npm start
+
+# ENV vars
+
+To start a listener on a port other than 3000, set/export the `PORT` ENV var.
+To start a HTTPs server, export:
+```
+SSL_KEY=/path/to/key
+SSL_CRT=/path/to/cert
+SSL_CA=/path/to/CA/cert
+```
+
+If you wish to auto redirect from HTTP (TCP 80) to HTTPs, set/export:
+```
+REDIRECT_HTTP=true
+```
+**Note that you can only start a listener on TCP 80 and 443 as a super user since these are well known port.**
+
 # Usage
 
 When the Node express app is up and running you can direct your Chrome browser to:
 
-		http://localhost:3000/?config=example.json
+> http://localhost:3000/?config=example.json`
 		
-where example.json is a configuration file placed in the directory config/ and can look like this:
-
-		{
-			"row0": [
-				{ "title": "View port title",
-				  "manifest": "http://example.com/master.m3u8",
-				  "type": "hls" }
-			],
-			"row1": [
-				{ "title": "View port title 2",
-				  "manifest": "http://example.com/manifest.mpd",
-				  "type": "dash" }
-			]
-		}
-
+where `example.json` is a configuration file placed in the directory `config/` and can look like this:
+```json
+{
+	"row0": [
+		{ "title": "View port title",
+		  "manifest": "http://example.com/master.m3u8",
+		  "type": "hls" }
+	],
+	"row1": [
+		{ "title": "View port title 2",
+		  "manifest": "http://example.com/manifest.mpd",
+		  "type": "dash" }
+	]
+}
+```
 To toggle audio on or off click on the viewport that you want to listen to. A green border indicates for which viewport the audio is enabled. You can also use the keyboard keys 1-8.
 
 ## Keyboard Shortcuts
