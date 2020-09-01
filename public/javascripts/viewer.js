@@ -104,6 +104,9 @@ function initViewPortRow(row, numcols, config) {
     c = config['row'+row][i];
     if (c) {
       initViewPort(c, videoelemid);
+    }else{
+	var divelem = document.getElementById("vp"+row+i+'-div');
+	divelem.style.visibility="hidden";
     }
   }
 }
