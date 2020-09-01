@@ -1,9 +1,43 @@
 #!/usr/bin/env node
 var debug = require('debug')('ott-multiview');
 var app = require('../app');
+var fs = require('fs');
+var https = require('https');
+var http = require('http');
+
 
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
-});
+// If these ENV vars are all set, start Express over HTTPs
+if (process.env.SSL_KEY && process.env.SSL_CRT && process.env.SSL_CA) {
+  var sslOptions = {
+    key: fs.readFileSync(process.env.SSL_KEY),
+    cert: fs.readFileSync(process.env.SSL_CRT),
+    ca: fs.readFileSync(process.env.SSL_CA),
+    requestCert: true,
+    rejectUnauthorized: false
+  };
+  var server = https.createServer(sslOptions, app).listen(app.get('port'), function(){
+    debug("Secure Express server listening on port "+ app.get('port'));
+  });
+// Is a redirect from HTTP (TCP 80) needed? Note that you can only start a listener on TCP 80 as a super user since it's a well known port
+  if (process.env.REDIRECT_HTTP === 'true'){
+	  // Redirect from http port 80 to https
+	  http.createServer(function (req, res) {
+	    res.writeHead(301, { "Location": "https://" + req.headers['host'].replace('80',app.get('port')) + req.url });
+	    res.end();
+	  }).listen(80);
+  }
+
+// If SSL cert and key vars are unset, start a HTTP server
+}else{
+  var server = http.createServer(app).listen(app.get('port'), function(){
+	  debug('Express server listening on port ' + server.address().port);
+  });
+}
+
+app.use((err, req, res, next) => {
+  debug(err);
+  next();
+})
+
