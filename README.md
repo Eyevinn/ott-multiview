@@ -60,6 +60,20 @@ where `example.json` is a configuration file placed in the directory `config/` a
 	]
 }
 ```
+
+If a row doesn't have 4 sources, you may opt to add a placeholder video to be displayed.
+For example, adding:
+```
+  "placeholder": [
+    { "title": "NO SIGNAL",
+      "manifest": "path/to/placeholder/videostream.mpd",
+      "type": "dash"
+    }
+ ]
+```
+Will play path/to/placeholder/videostream.mpd in the extra divs.
+If no `placeholder` is defined, these divs' `display` attribute will be set to `none`, effectively hiding them.
+
 To toggle audio on or off click on the viewport that you want to listen to. A green border indicates for which viewport the audio is enabled. You can also use the keyboard keys 1-8.
 
 ## Keyboard Shortcuts

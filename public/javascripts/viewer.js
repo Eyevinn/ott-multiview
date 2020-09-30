@@ -104,6 +104,12 @@ function initViewPortRow(row, numcols, config) {
     c = config['row'+row][i];
     if (c) {
       initViewPort(c, videoelemid);
+    }else if (config['placeholder'] !== undefined &&  config['placeholder'][0] !== undefined){
+	c = config['placeholder'][0];
+        initViewPort(c, videoelemid);
+    }else{
+	var divelem = document.getElementById("vp"+row+i+'-div');
+	divelem.style.display="none";
     }
   }
 }
