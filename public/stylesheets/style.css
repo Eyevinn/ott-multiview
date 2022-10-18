@@ -17,6 +17,15 @@ th {
   padding: 0.3em;
 }
 
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+
 .videoInfo {
   background-color: rgba(0,0,0,0.80);
   border-radius: 5%;
